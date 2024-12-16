@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cebm7pt6j4js7"
-path.s3tc="res://.godot/imported/easterEgg1.jpg-f5211fa50e13dcfa45812c0eeb35bf12.s3tc.ctex"
+path.s3tc="res://.godot/imported/easterEgg1.jpg-a1921eb46754f22515f81da115c6a463.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://easterEgg1.jpg"
-dest_files=["res://.godot/imported/easterEgg1.jpg-f5211fa50e13dcfa45812c0eeb35bf12.s3tc.ctex"]
+source_file="res://Assets/easterEgg1.jpg"
+dest_files=["res://.godot/imported/easterEgg1.jpg-a1921eb46754f22515f81da115c6a463.s3tc.ctex"]
 
 [params]
 

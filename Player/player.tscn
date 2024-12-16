@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://18c7brh1axl0"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_e07hd"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_e07hd"]
 [ext_resource type="AudioStream" uid="uid://boe51dk3gyn8m" path="res://Audio/SFX - Explosion.mp3" id="2_tlc03"]
 [ext_resource type="AudioStream" uid="uid://cncscpx2eydli" path="res://Audio/SFX - Success.ogg" id="3_su4oi"]
 [ext_resource type="AudioStream" uid="uid://bbt6eq62n0p4y" path="res://Audio/SFX - Main engine thrust.ogg" id="4_vi616"]
 [ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://Particles/booster_particles.tscn" id="5_b65u3"]
 [ext_resource type="PackedScene" uid="uid://dcecb8hw7dbrv" path="res://Particles/explosion_particles.tscn" id="6_efvp8"]
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://Particles/success_particles.tscn" id="7_eyjja"]
-[ext_resource type="Material" uid="uid://b5kdtuimvdyqx" path="res://ShipRedMaterial.tres" id="8_cbbkq"]
+[ext_resource type="Material" uid="uid://b5kdtuimvdyqx" path="res://Assets/ShipRedMaterial.tres" id="8_cbbkq"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_b4a41"]
 

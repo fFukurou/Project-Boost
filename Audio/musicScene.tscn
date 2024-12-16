@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxpqveth23537"]
 
-[ext_resource type="AudioStream" uid="uid://84y8wud65ee5" path="res://Audio/music.ogg" id="1_flfo7"]
+[ext_resource type="AudioStream" uid="uid://84y8wud65ee5" path="res://Audio/music.ogg" id="1_s548m"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_flfo7")
+stream = ExtResource("1_s548m")
 volume_db = -24.035
 autoplay = true

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://h16rjxcstdp0"]
 
 [ext_resource type="Script" path="res://Level/landing_pad.gd" id="1_ob48c"]
-[ext_resource type="PackedScene" uid="uid://18c7brh1axl0" path="res://player.tscn" id="2_5njdy"]
-[ext_resource type="PackedScene" uid="uid://bmvkfrk8vqdy2" path="res://moving_hazard.tscn" id="3_gpwjh"]
-[ext_resource type="PackedScene" uid="uid://dfklmlikwiblo" path="res://background.tscn" id="4_gi4se"]
+[ext_resource type="PackedScene" uid="uid://18c7brh1axl0" path="res://Player/player.tscn" id="2_5njdy"]
+[ext_resource type="PackedScene" uid="uid://bmvkfrk8vqdy2" path="res://Level/moving_hazard.tscn" id="3_gpwjh"]
+[ext_resource type="PackedScene" uid="uid://dfklmlikwiblo" path="res://Level/background.tscn" id="4_gi4se"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww7x8"]
 albedo_color = Color(0.0101007, 0.473992, 0.808474, 1)
