@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8cabakxa1iu4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4shck"]
+albedo_color = Color(0.683641, 0.380322, 0.890045, 1)
+
+[node name="Obstacle" type="CSGBox3D" groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45776, 0)
+use_collision = true
+size = Vector3(3, 2, 3)
+material = SubResource("StandardMaterial3D_4shck")

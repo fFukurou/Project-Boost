@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpewolxijuyiu"]
+
+[ext_resource type="Script" path="res://Level/landing_pad.gd" id="1_pka3f"]
+[ext_resource type="PackedScene" uid="uid://b8cabakxa1iu4" path="res://hazard.tscn" id="1_uxvgb"]
+[ext_resource type="PackedScene" uid="uid://18c7brh1axl0" path="res://player.tscn" id="2_ggr14"]
+[ext_resource type="PackedScene" uid="uid://dfklmlikwiblo" path="res://background.tscn" id="3_77d1a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4shck"]
+albedo_color = Color(0.683641, 0.380322, 0.890045, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww7x8"]
+albedo_color = Color(0.0101007, 0.473992, 0.808474, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cenc"]
+albedo_color = Color(0.0511, 0.73, 0.32266, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="Obstacle" parent="." instance=ExtResource("1_uxvgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35913, 0)
+size = Vector3(3, 4.19727, 3)
+
+[node name="Obstacle2" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 0.71165, 0, 0, 0, 1, 0, 11.6906, 0)
+use_collision = true
+size = Vector3(3, 4.59094, 3)
+material = SubResource("StandardMaterial3D_4shck")
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 0.2, 0)
+top_level = true
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_ww7x8")
+
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4642, 0.2, 0)
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_2cenc")
+script = ExtResource("1_pka3f")
+file_path = "res://Level/level4.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, -0.000499249, 10.745, 14.747)
+
+[node name="Player" parent="." instance=ExtResource("2_ggr14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 1.4, 0)
+torque_thrust = 200.0
+
+[node name="Floor" parent="." instance=ExtResource("3_77d1a")]
+
+[node name="Label3D" type="Label3D" parent="." groups=["Hazard"]]
+transform = Transform3D(2.28552, 0, 0, 0, 2.35593, 0, 0, 0, 1, -7.33873, 7.72496, -15.8392)
+text = "Level 3"
+font_size = 200

@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://h16rjxcstdp0"]
+
+[ext_resource type="Script" path="res://Level/landing_pad.gd" id="1_ob48c"]
+[ext_resource type="PackedScene" uid="uid://18c7brh1axl0" path="res://player.tscn" id="2_5njdy"]
+[ext_resource type="PackedScene" uid="uid://bmvkfrk8vqdy2" path="res://moving_hazard.tscn" id="3_gpwjh"]
+[ext_resource type="PackedScene" uid="uid://dfklmlikwiblo" path="res://background.tscn" id="4_gi4se"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww7x8"]
+albedo_color = Color(0.0101007, 0.473992, 0.808474, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cenc"]
+albedo_color = Color(0.0511, 0.73, 0.32266, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 0.2, 0)
+top_level = true
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_ww7x8")
+
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4642, 0.2, 0)
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_2cenc")
+script = ExtResource("1_ob48c")
+file_path = "res://Level/level10.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, -0.000499249, 10.745, 14.747)
+
+[node name="Player" parent="." instance=ExtResource("2_5njdy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 1.4, 0)
+torque_thrust = 200.0
+
+[node name="MovingHazard" parent="." instance=ExtResource("3_gpwjh")]
+transform = Transform3D(0.752334, -0.658781, 0, 0.658781, 0.752334, 0, 0, 0, 1, -8.16988, 12.1442, 0.0071373)
+destination = Vector3(9, -13, 0)
+duration = 2.0
+
+[node name="MovingHazard4" parent="." instance=ExtResource("3_gpwjh")]
+transform = Transform3D(0.752334, -0.658781, 0, 0.658781, 0.752334, 0, 0, 0, 1, 8.50586, 1.59755, 0.0071373)
+destination = Vector3(-9, 13, 0)
+duration = 2.0
+
+[node name="MovingHazard2" parent="." instance=ExtResource("3_gpwjh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48589, 1.25959, 0.153217)
+destination = Vector3(0, 8, 0)
+duration = 3.0
+
+[node name="MovingHazard3" parent="." instance=ExtResource("3_gpwjh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5313, 8.09632, 0.153217)
+destination = Vector3(-22, 0, 0)
+duration = 2.5
+
+[node name="Floor2" parent="." instance=ExtResource("4_gi4se")]
+
+[node name="Label3D" type="Label3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0440462, 14.0278, -2.78537)
+text = "Level 9"
+font_size = 200

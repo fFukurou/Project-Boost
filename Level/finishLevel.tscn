@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6rcccgiggutn"]
+
+[ext_resource type="Script" path="res://Level/landing_pad.gd" id="1_5em2m"]
+[ext_resource type="PackedScene" uid="uid://18c7brh1axl0" path="res://player.tscn" id="2_bcp1d"]
+[ext_resource type="PackedScene" uid="uid://dfklmlikwiblo" path="res://background.tscn" id="3_y38oa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww7x8"]
+albedo_color = Color(0.0101007, 0.473992, 0.808474, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cenc"]
+albedo_color = Color(0.0511, 0.73, 0.32266, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ehpr1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0c5tf"]
+
+[node name="Level" type="Node3D"]
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 0.2, 0)
+top_level = true
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_ww7x8")
+
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4642, 0.2, 0)
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_2cenc")
+script = ExtResource("1_5em2m")
+file_path = "res://Level/level1.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, -0.000499249, 10.745, 14.747)
+
+[node name="Player" parent="." instance=ExtResource("2_bcp1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 1.4, 0)
+torque_thrust = 200.0
+
+[node name="Floor" parent="." instance=ExtResource("3_y38oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0200701, -4, 0.000312805)
+
+[node name="Label3D" type="Label3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0330505, 9, -0.023737)
+text = "Thank you for testing my game!
+by
+fFukurou"
+font_size = 200
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.55209, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(16.7293, 0, 0, 0, 0.257557, 0, 0, 0, 1, -0.124134, 4.07847, -0.023737)
+visible = false
+mesh = SubResource("BoxMesh_ehpr1")
+skeleton = NodePath("../../Label3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" groups=["Hazard"]]
+transform = Transform3D(16.8284, 0, 0, 0, 4.44945, 0, 0, 0, 4.53514, 0.00880575, 3.6464, 0.00180054)
+shape = SubResource("BoxShape3D_0c5tf")

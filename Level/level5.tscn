@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfaxak04n0s2k"]
+
+[ext_resource type="Script" path="res://Level/landing_pad.gd" id="1_lwmrv"]
+[ext_resource type="PackedScene" uid="uid://18c7brh1axl0" path="res://player.tscn" id="2_lot4i"]
+[ext_resource type="PackedScene" uid="uid://dfklmlikwiblo" path="res://background.tscn" id="4_0by0o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o43gm"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3bnas"]
+sky_material = SubResource("ProceduralSkyMaterial_o43gm")
+
+[sub_resource type="Environment" id="Environment_8gwgi"]
+background_mode = 1
+sky = SubResource("Sky_3bnas")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww7x8"]
+albedo_color = Color(0.0101007, 0.473992, 0.808474, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cenc"]
+albedo_color = Color(0.0511, 0.73, 0.32266, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko3tw"]
+albedo_color = Color(0.510412, 0.228211, 0.0655567, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8gwgi")
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 0.2, 0)
+top_level = true
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_ww7x8")
+
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4642, 0.2, 0)
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_2cenc")
+script = ExtResource("1_lwmrv")
+file_path = "res://Level/level6.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, -0.000499249, 10.745, 14.747)
+
+[node name="Player" parent="." instance=ExtResource("2_lot4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 1.4, 0)
+torque_thrust = 200.0
+
+[node name="Floor" parent="." instance=ExtResource("4_0by0o")]
+
+[node name="Obstacle" type="CSGBox3D" parent="." groups=["Hazard"]]
+unique_name_in_owner = true
+transform = Transform3D(6.65315, 0, 0, 0, 2.94941, 0, 0, 0, 2.94941, 0, 9.45776, -2.78894)
+use_collision = true
+size = Vector3(3, 2, 3)
+material = SubResource("StandardMaterial3D_ko3tw")
+
+[node name="Label3D" type="Label3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0440462, 14.0278, -2.78537)
+text = "Level 5"
+font_size = 200

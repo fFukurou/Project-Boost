@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwk6ynglm32in"]
+
+[ext_resource type="Script" path="res://Level/landing_pad.gd" id="1_6y6ce"]
+[ext_resource type="PackedScene" uid="uid://18c7brh1axl0" path="res://player.tscn" id="2_k3jd3"]
+[ext_resource type="PackedScene" uid="uid://bmvkfrk8vqdy2" path="res://moving_hazard.tscn" id="3_b3jtw"]
+[ext_resource type="PackedScene" uid="uid://dfklmlikwiblo" path="res://background.tscn" id="4_ngdbh"]
+[ext_resource type="PackedScene" uid="uid://b8cabakxa1iu4" path="res://hazard.tscn" id="5_oehff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww7x8"]
+albedo_color = Color(0.0101007, 0.473992, 0.808474, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cenc"]
+albedo_color = Color(0.0511, 0.73, 0.32266, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ls6ro"]
+albedo_color = Color(0.35, 0.229425, 0.1645, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 0.2, 0)
+top_level = true
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_ww7x8")
+
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4642, 0.2, 0)
+use_collision = true
+size = Vector3(2, 0.4, 2)
+material = SubResource("StandardMaterial3D_2cenc")
+script = ExtResource("1_6y6ce")
+file_path = "res://Level/level8.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, -0.000499249, 10.745, 14.747)
+
+[node name="Player" parent="." instance=ExtResource("2_k3jd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.967, 1.4, 0)
+torque_thrust = 200.0
+
+[node name="MovingHazard" parent="." instance=ExtResource("3_b3jtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.87521, 9.04425, 0)
+destination = Vector3(-15, 0, 0)
+duration = 3.0
+
+[node name="Floor2" parent="." instance=ExtResource("4_ngdbh")]
+material = SubResource("StandardMaterial3D_ls6ro")
+
+[node name="Obstacle" parent="." instance=ExtResource("5_oehff")]
+transform = Transform3D(6.62855, 0, 0, 0, 2.39657, 0, 0, 0, 0.849042, 0.431637, 2.45776, 0.000312805)
+size = Vector3(3.22729, 2, 3)
+
+[node name="Label3D" type="Label3D" parent="." groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0440462, 14.0278, -2.78537)
+text = "Level 7"
+font_size = 200
