@@ -1,3 +1,7 @@
+## Instructions
+### --> Download the repo and execute the ProjectBoost.exe file
+
+
 ## How to play
 
 - Press W, A, S, D to engage thrusters.
